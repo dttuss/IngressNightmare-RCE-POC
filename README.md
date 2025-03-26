@@ -5,12 +5,12 @@ This repository contains a proof-of-concept (PoC) exploit for CVE-2025-1974, a C
 ⸻
 
 📌 Impact:
-	•	Affected Versions: Ingress-NGINX controller prior to v1.12.1 / v1.11.5
-	•	Attack Surface:
+•	Affected Versions: Ingress-NGINX controller prior to v1.12.1 / v1.11.5
+•	Attack Surface:
 	•	Exploitable by any workload on the Pod network — no credentials or admin privileges required
 	•	Attackers can inject arbitrary NGINX directives (e.g., content_by_lua_block) via annotations like configuration-snippet
 	•	When combined with misconfigurations, attackers can exfiltrate Secrets or achieve full cluster compromise
-	•	Scope:
+•	Scope:
 	•	Ingress-NGINX often has access to all cluster Secrets by default
 	•	Pods in a typical cloud VPC or corporate network can reach the admission controller endpoint
 	•	Affected clusters include those running Ingress-NGINX with admission control enabled (default in many setups)
@@ -18,10 +18,10 @@ This repository contains a proof-of-concept (PoC) exploit for CVE-2025-1974, a C
 ⸻
 
 🛡️ Mitigation:
-	•	Upgrade to Ingress-NGINX v1.12.1 or v1.11.5
-	•	Disable risky annotations (configuration-snippet, server-snippet, etc.)
-	•	Lock down network access to the Validating Admission Webhook
-	•	Apply strict RBAC to prevent unauthorized Ingress creation
+•	Upgrade to Ingress-NGINX v1.12.1 or v1.11.5
+•	Disable risky annotations (configuration-snippet, server-snippet, etc.)
+•	Lock down network access to the Validating Admission Webhook
+•	Apply strict RBAC to prevent unauthorized Ingress creation
 
 ⸻
 
